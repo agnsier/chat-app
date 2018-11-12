@@ -14,10 +14,11 @@ socket.on('disconnect', function () {
 
 jQuery('#message-form').on('submit', function (e) {
     e.preventDefault();
+    var messageInput = jQuery('[name=message]')
     socket.emit('createMessage', {
         from: 'User',
-        text: jQuery('[name=message]').val()
+        text: messageInput.val()
     }, function () {
-
+        messageInput.val('');
     })
 });
